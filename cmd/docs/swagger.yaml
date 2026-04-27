@@ -1,0 +1,10 @@
+basePath: /
+host: localhost:8080
+info:
+  contact: {}
+  description: Documentation API for Real Time Chat using Fiber + WebSocket
+  termsOfService: http://swagger.io/terms/
+  title: Real Time Chat API + WebSocket
+  version: "1.0"
+paths: {}
+swagger: "2.0"

@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      APP_PORT: 8080
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: secret
+      DB_NAME: chat_db
+      REDIS_ADDR: redis:6379
+      JWT_SECRET: your_super_secret_key
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: chat_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  postgres_data:
+
+    # Build dan jalankan semua service:
+    # docker-compose up --build
